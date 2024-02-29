@@ -1,32 +1,32 @@
-#!/bin/python3
+#User function Template for python3
 
-import math
-import os
-import random
-import re
-import sys
-
-#
-# Complete the 'countSwaps' function below.
-#
-# The function accepts INTEGER_ARRAY a as parameter.
-#
-
-def countSwaps(a):
-    cnt=0
-    for i in range(len(a)):
-        for j in range(len(a)-i-1):
-            if a[j]>a[j+1]:
-                a[j],a[j+1]=a[j+1],a[j]
-                cnt+=1
+class Solution: 
     
-    print("Array is sorted in "+str(cnt)+" swaps.")
-    print("First Element:",a[0])
-    print("Last Element:",a[len(a)-1])
+    
+    def selectionSort(self, arr,n):
+        
+        for i in range(n):
+            mn=i
+            for j in range(i+1,n):
+                if arr[mn]>arr[j]:
+                    mn=j
+            
+            arr[i],arr[mn]=arr[mn],arr[i]
+        
+        return arr
+        
 
-if __name__ == '__main__':
-    n = int(input().strip())
+#{ 
+ # Driver Code Starts
+#Initial Template for Python 3
 
-    a = list(map(int, input().rstrip().split()))
-
-    countSwaps(a)
+if __name__ == '__main__': 
+    t = int(input())
+    for _ in range(t):
+        n = int(input())
+        arr = list(map(int, input().strip().split()))
+        Solution().selectionSort(arr, n)
+        for i in range(n):
+            print(arr[i],end=" ")
+        print()
+# } Driver Code Ends
